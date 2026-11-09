@@ -1,0 +1,685 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>iMove Croacia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: one narrow column for phones (Instagram link in bio): brand header, language switch, services list, one booking panel, contact links. */
+:root {
+  --bg: #F2F7F6;
+  --surface: #FFFFFF;
+  --fg: #12304A;
+  --muted: #4A5E6B;
+  --line: #D5E2DF;
+  --accent: #1F9D8F;
+  --accent-text: #0F6F65;
+  --btn-bg: #12304A;
+  --btn-fg: #FFFFFF;
+  --chip-on-bg: #12304A;
+  --chip-on-fg: #FFFFFF;
+  --logo-sq: #12304A;
+  --logo-on: #FFFFFF;
+  --logo-acc: #4CC9BA;
+  --font: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B1B29;
+    --surface: #112B40;
+    --fg: #EAF3F1;
+    --muted: #A8BCC6;
+    --line: #24445A;
+    --accent: #4CC9BA;
+    --accent-text: #6FD8CB;
+    --btn-bg: #4CC9BA;
+    --btn-fg: #0B1B29;
+    --chip-on-bg: #4CC9BA;
+    --chip-on-fg: #0B1B29;
+    --logo-sq: #FFFFFF;
+    --logo-on: #12304A;
+    --logo-acc: #1F9D8F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B1B29;
+  --surface: #112B40;
+  --fg: #EAF3F1;
+  --muted: #A8BCC6;
+  --line: #24445A;
+  --accent: #4CC9BA;
+  --accent-text: #6FD8CB;
+  --btn-bg: #4CC9BA;
+  --btn-fg: #0B1B29;
+  --chip-on-bg: #4CC9BA;
+  --chip-on-fg: #0B1B29;
+  --logo-sq: #FFFFFF;
+  --logo-on: #12304A;
+  --logo-acc: #1F9D8F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap {
+  max-width: 560px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* header */
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand svg { flex: none; width: 56px; height: 56px; }
+.brand-name { font-size: 36px; line-height: 1; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+.tag { font-size: 20px; line-height: 1.3; font-weight: 700; margin: 0; text-wrap: balance; }
+.hero { display: flex; flex-direction: column; gap: 14px; }
+.sub { margin: 0; color: var(--muted); }
+.intro { margin: 0; max-width: 65ch; }
+
+/* language switch */
+.langs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.langs button {
+  min-height: 44px;
+  padding: 6px 4px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.langs button[aria-pressed="true"] {
+  background: var(--chip-on-bg);
+  color: var(--chip-on-fg);
+  border-color: var(--chip-on-bg);
+  font-weight: 700;
+}
+
+/* sections */
+h2 { font-size: 13px; line-height: 1.2; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 0 0 12px; }
+
+/* services */
+.svc { border-top: 1px solid var(--line); }
+.svc details { border-bottom: 1px solid var(--line); }
+.svc summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 56px;
+  padding-block: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.svc summary::-webkit-details-marker { display: none; }
+.svc summary::after {
+  content: "";
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-right: 2.5px solid var(--accent-text);
+  border-bottom: 2.5px solid var(--accent-text);
+  transform: rotate(45deg);
+  transition: transform 0.15s;
+}
+.svc details[open] summary::after { transform: rotate(-135deg); }
+.svc p { margin: 0 0 16px; color: var(--muted); max-width: 60ch; }
+.svc-meta { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+
+/* booking */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.panel h2 { font-size: 24px; letter-spacing: -0.01em; text-transform: none; color: var(--fg); margin: 0; font-weight: 800; line-height: 1.2; }
+.lead { margin: 0; color: var(--muted); }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; border: 0; margin: 0; padding: 0; }
+.field > label, .field > legend { font-size: 14px; font-weight: 700; padding: 0; }
+.hint { font-size: 13px; color: var(--muted); margin: 0; }
+.field select, .field input[type="text"], .field input[type="date"], .field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-size: 16px;
+}
+.field textarea { min-height: 96px; resize: vertical; }
+.row2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.chip span {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  font-size: 15px;
+  font-weight: 500;
+}
+.chip input:checked + span { background: var(--chip-on-bg); color: var(--chip-on-fg); border-color: var(--chip-on-bg); font-weight: 700; }
+.chip input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.preview-box { display: flex; flex-direction: column; gap: 6px; }
+.preview-box .lbl { font-size: 13px; font-weight: 700; color: var(--muted); }
+#preview {
+  margin: 0;
+  padding: 12px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+}
+.actions { display: flex; flex-direction: column; gap: 10px; }
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--btn-bg);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+.btn.alt { background: transparent; color: var(--fg); border-color: var(--line); }
+.status { min-height: 1.4em; margin: 0; font-size: 14px; color: var(--accent-text); font-weight: 700; }
+
+/* contact */
+.links { display: flex; flex-direction: column; gap: 8px; }
+.links a, .links .mail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.links small { font-weight: 500; color: var(--muted); font-size: 14px; }
+
+.disc { font-size: 13px; line-height: 1.5; color: var(--muted); margin: 0; }
+.disc strong { color: var(--fg); }
+@media (prefers-reduced-motion: reduce) { .svc summary::after { transition: none; } }
+</style>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="brand">
+      <svg viewBox="0 0 120 120" role="img" aria-label="iMove">
+        <rect width="120" height="120" rx="28" style="fill: var(--logo-sq)"/>
+        <circle cx="29" cy="36" r="7" style="fill: var(--logo-acc)"/>
+        <rect x="23" y="50" width="12" height="36" rx="6" style="fill: var(--logo-on)"/>
+        <path d="M52 34 L72 60 L52 86" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--logo-on)"/>
+        <path d="M74 34 L94 60 L74 86" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--logo-acc)"/>
+      </svg>
+      <h1 class="brand-name">iMove</h1>
+    </div>
+    <p class="tag" data-i18n="tag">Acompañamiento para vivir y trabajar en Croacia</p>
+    <p class="sub" data-i18n="sub">En español, inglés, ruso y croata. Presencial o virtual.</p>
+    <p class="intro" data-i18n="intro">Pasé por el proceso en Croacia y hoy trabajo en Recursos Humanos aquí. Te acompaño para que avances con más claridad, menos errores y menos estrés.</p>
+  </header>
+
+  <div class="langs" role="group" aria-label="Idioma / Language / Язык / Jezik">
+    <button type="button" data-lang="es" lang="es" aria-pressed="true">Español</button>
+    <button type="button" data-lang="en" lang="en" aria-pressed="false">English</button>
+    <button type="button" data-lang="ru" lang="ru" aria-pressed="false">Русский</button>
+    <button type="button" data-lang="hr" lang="hr" aria-pressed="false">Hrvatski</button>
+  </div>
+
+  <section aria-labelledby="h-svc">
+    <h2 id="h-svc" data-i18n="svcTitle">Servicios</h2>
+    <div class="svc">
+      <details open>
+        <summary><span data-i18n="s1t">Consulta inicial</span></summary>
+        <p data-i18n="s1d">Revisamos tu situación y tu objetivo (trabajo, reunificación familiar u otro) y te explico el camino general: qué pasos existen, en qué orden y qué institución interviene.</p>
+      </details>
+      <details>
+        <summary><span data-i18n="s2t">Revisión de documentos</span></summary>
+        <p data-i18n="s2d">Checklist personalizada de lo que necesitas reunir y revisión de que tus documentos estén completos y ordenados antes de presentarlos.</p>
+      </details>
+      <details>
+        <summary><span data-i18n="s3t">Acompañamiento a trámites</span></summary>
+        <p data-i18n="s3d">Voy contigo a citas e instituciones para apoyarte con el idioma y la orientación práctica. Tú presentas tu solicitud; yo te acompaño.</p>
+      </details>
+      <details>
+        <summary><span data-i18n="s4t">CV y entrevistas</span></summary>
+        <p data-i18n="s4d">CV adaptado al mercado laboral croata y preparación para entrevistas, con la mirada de alguien que trabaja en RR. HH.</p>
+      </details>
+    </div>
+    <p class="svc-meta" data-i18n="svcMeta">Presencial o virtual · ES · EN · RU · HR · Precio según tu caso</p>
+  </section>
+
+  <section class="panel" aria-labelledby="h-book" id="agenda">
+    <h2 id="h-book" data-i18n="bkTitle">Agenda tu consulta</h2>
+    <p class="lead" data-i18n="bkLead">Elige servicio y horario. Te respondo para confirmar día y hora exactos (hora de Croacia).</p>
+
+    <form id="bk" autocomplete="off">
+      <div style="display: flex; flex-direction: column; gap: 18px">
+        <div class="field">
+          <label for="f-service" data-i18n="fService">Servicio</label>
+          <select id="f-service">
+            <option value="s1" data-i18n="s1t">Consulta inicial</option>
+            <option value="s2" data-i18n="s2t">Revisión de documentos</option>
+            <option value="s3" data-i18n="s3t">Acompañamiento a trámites</option>
+            <option value="s4" data-i18n="s4t">CV y entrevistas</option>
+            <option value="none" data-i18n="optNone">Aún no lo sé, necesito orientación</option>
+          </select>
+        </div>
+
+        <fieldset class="field">
+          <legend data-i18n="fMode">Modalidad</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="mode" value="online" checked><span data-i18n="mOnline">Virtual</span></label>
+            <label class="chip"><input type="radio" name="mode" value="inperson"><span data-i18n="mInperson">Presencial</span></label>
+          </div>
+        </fieldset>
+
+        <div class="row2">
+          <div class="field">
+            <label for="f-date" data-i18n="fDate">Día preferido</label>
+            <input type="date" id="f-date">
+          </div>
+          <fieldset class="field">
+            <legend data-i18n="fSlot">Franja horaria</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="slot" value="morning"><span data-i18n="slMorning">Mañana</span></label>
+              <label class="chip"><input type="radio" name="slot" value="afternoon"><span data-i18n="slAfternoon">Tarde</span></label>
+              <label class="chip"><input type="radio" name="slot" value="evening"><span data-i18n="slEvening">Noche</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="field">
+          <label for="f-lang" data-i18n="fLang">Idioma de la sesión</label>
+          <select id="f-lang">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="hr">Hrvatski</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-name" data-i18n="fName">Tu nombre</label>
+          <input type="text" id="f-name" maxlength="80">
+        </div>
+
+        <div class="field">
+          <label for="f-note" data-i18n="fNote">Comentario (opcional)</label>
+          <textarea id="f-note" maxlength="400" data-i18n-ph="notePh" placeholder="Cuéntame brevemente tu caso (por ejemplo, permiso de trabajo o reunificación familiar)"></textarea>
+          <p class="hint" data-i18n="noteHint">No incluyas números de documentos ni datos sensibles.</p>
+        </div>
+
+        <div class="preview-box">
+          <span class="lbl" data-i18n="reqTitle">Tu solicitud</span>
+          <pre id="preview" aria-live="polite"></pre>
+        </div>
+
+        <div class="actions">
+          <a class="btn" id="btn-wa" href="#" target="_blank" rel="noopener" hidden><span data-i18n="btnWa">Enviar por WhatsApp</span></a>
+          <button type="button" class="btn" id="btn-copy"><span data-i18n="btnCopy">Copiar solicitud</span></button>
+          <a class="btn alt" id="btn-cal" href="#" target="_blank" rel="noopener" hidden><span data-i18n="btnCal">Ver calendario</span></a>
+          <p class="status" id="status" role="status"></p>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <section id="contact" aria-labelledby="h-ct" hidden>
+    <h2 id="h-ct" data-i18n="ctTitle">Contacto</h2>
+    <div class="links" id="links"></div>
+  </section>
+
+  <p class="disc"><strong data-i18n="discTitle">Importante.</strong> <span data-i18n="disc">iMove ofrece acompañamiento y orientación informativa. No es un despacho de abogados ni presta asesoría jurídica ni representación legal. Los requisitos migratorios cambian: la información oficial vigente es la del Ministarstvo unutarnjih poslova (MUP). No se garantizan resultados.</span></p>
+</main>
+
+<script>
+(function () {
+  // Datos de contacto. Se completan al tener los reales; lo que queda vacío no se muestra.
+  var CONFIG = {
+    whatsapp: "",   // número con prefijo de país y sin +, por ejemplo 385911234567
+    instagram: "",  // usuario sin @
+    email: "",
+    bookingUrl: ""  // enlace a un calendario de reservas (Cal.com, Google Calendar, etc.)
+  };
+
+  var LOCALES = { es: "es-ES", en: "en-GB", ru: "ru-RU", hr: "hr-HR" };
+  var NAMES = { es: "Español", en: "English", ru: "Русский", hr: "Hrvatski" };
+
+  var T = { es: {}, en: {}, ru: {}, hr: {} };
+
+  T.en = {
+    tag: "Support for living and working in Croatia",
+    sub: "In Spanish, English, Russian and Croatian. In person or online.",
+    intro: "I went through the process in Croatia myself, and today I work in HR here. I will walk with you so you move forward with more clarity, fewer mistakes and less stress.",
+    svcTitle: "Services",
+    s1t: "First consultation",
+    s1d: "We review your situation and goal (work, family reunification or other) and I explain the general path: which steps exist, in what order, and which institution is involved.",
+    s2t: "Document review",
+    s2d: "A personalized checklist of what you need to gather, and a check that your documents are complete and in order before you submit them.",
+    s3t: "Support at appointments",
+    s3d: "I come with you to appointments and institutions to help with language and practical guidance. You submit your application; I accompany you.",
+    s4t: "CV and interviews",
+    s4d: "A CV adapted to the Croatian job market and interview preparation, from someone who works in HR.",
+    svcMeta: "In person or online · ES · EN · RU · HR · Price depends on your case",
+    bkTitle: "Book a session",
+    bkLead: "Pick a service and a time. I will reply to confirm the exact day and time (Croatia time).",
+    fService: "Service",
+    optNone: "Not sure yet, I need guidance",
+    fMode: "Format",
+    mOnline: "Online",
+    mInperson: "In person",
+    fDate: "Preferred day",
+    fSlot: "Time of day",
+    slMorning: "Morning",
+    slAfternoon: "Afternoon",
+    slEvening: "Evening",
+    fLang: "Session language",
+    fName: "Your name",
+    fNote: "Note (optional)",
+    notePh: "Briefly describe your case (for example, work permit or family reunification)",
+    noteHint: "Please do not include document numbers or sensitive data.",
+    reqTitle: "Your request",
+    btnWa: "Send on WhatsApp",
+    btnCopy: "Copy request",
+    btnCal: "View calendar",
+    copied: "Copied",
+    copyFail: "Select the text above and copy it",
+    ctTitle: "Contact",
+    discTitle: "Important.",
+    disc: "iMove provides support and general information. It is not a law firm and does not provide legal advice or legal representation. Requirements change: the current official information is on the Ministarstvo unutarnjih poslova (MUP) website. Results are not guaranteed.",
+    msgHello: "Hello, I would like to book a session with iMove.",
+    msgService: "Service", msgMode: "Format", msgDay: "Preferred day", msgSlot: "Time of day (Croatia time)",
+    msgLang: "Session language", msgName: "Name", msgNote: "Note"
+  };
+
+  T.ru = {
+    tag: "Сопровождение для жизни и работы в Хорватии",
+    sub: "На испанском, английском, русском и хорватском. Лично или онлайн.",
+    intro: "Этот путь в Хорватии уже пройден лично мной, сегодня я работаю в HR. Я рядом, чтобы вы двигались вперёд яснее, с меньшим числом ошибок и стресса.",
+    svcTitle: "Услуги",
+    s1t: "Первая консультация",
+    s1d: "Разберём вашу ситуацию и цель (работа, воссоединение семьи или другое), и я объясню общий путь: какие есть шаги, в каком порядке и какое ведомство за что отвечает.",
+    s2t: "Проверка документов",
+    s2d: "Персональный список того, что нужно собрать, и проверка, что документы полные и в порядке до подачи.",
+    s3t: "Сопровождение на приёмах",
+    s3d: "Прихожу с вами на приёмы и в учреждения, помогаю с языком и практическими советами. Заявление подаёте вы, а я сопровождаю.",
+    s4t: "Резюме и собеседования",
+    s4d: "Резюме под хорватский рынок труда и подготовка к собеседованиям от человека, который работает в HR.",
+    svcMeta: "Лично или онлайн · ES · EN · RU · HR · Стоимость зависит от вашего случая",
+    bkTitle: "Записаться на встречу",
+    bkLead: "Выберите услугу и время. Я отвечу и подтвержу точный день и время (по времени Хорватии).",
+    fService: "Услуга",
+    optNone: "Пока не знаю, нужна ориентация",
+    fMode: "Формат",
+    mOnline: "Онлайн",
+    mInperson: "Лично",
+    fDate: "Желаемый день",
+    fSlot: "Время суток",
+    slMorning: "Утро",
+    slAfternoon: "День",
+    slEvening: "Вечер",
+    fLang: "Язык встречи",
+    fName: "Ваше имя",
+    fNote: "Комментарий (по желанию)",
+    notePh: "Коротко опишите ваш случай (например, разрешение на работу или воссоединение семьи)",
+    noteHint: "Не указывайте номера документов и конфиденциальные данные.",
+    reqTitle: "Ваш запрос",
+    btnWa: "Отправить в WhatsApp",
+    btnCopy: "Скопировать запрос",
+    btnCal: "Открыть календарь",
+    copied: "Скопировано",
+    copyFail: "Выделите текст выше и скопируйте его",
+    ctTitle: "Контакты",
+    discTitle: "Важно.",
+    disc: "iMove предоставляет сопровождение и информационную поддержку. Это не юридическая фирма: юридические консультации и представительство не оказываются. Требования меняются, актуальная информация всегда на сайте Ministarstvo unutarnjih poslova (MUP). Результат не гарантируется.",
+    msgHello: "Здравствуйте, хочу записаться на встречу с iMove.",
+    msgService: "Услуга", msgMode: "Формат", msgDay: "Желаемый день", msgSlot: "Время суток (время Хорватии)",
+    msgLang: "Язык встречи", msgName: "Имя", msgNote: "Комментарий"
+  };
+
+  T.hr = {
+    tag: "Podrška za život i rad u Hrvatskoj",
+    sub: "Na španjolskom, engleskom, ruskom i hrvatskom. Uživo ili online.",
+    intro: "Ovaj postupak u Hrvatskoj poznajem iz vlastitog iskustva, a danas radim u ljudskim resursima. Tu sam da napredujete jasnije, s manje pogrešaka i manje stresa.",
+    svcTitle: "Usluge",
+    s1t: "Prvi razgovor",
+    s1d: "Pregledamo vašu situaciju i cilj (rad, spajanje obitelji ili drugo) i objasnim vam opći put: koji koraci postoje, kojim redom i koja je institucija nadležna.",
+    s2t: "Pregled dokumenata",
+    s2d: "Osobni popis onoga što trebate prikupiti i provjera jesu li dokumenti potpuni i uredni prije predaje.",
+    s3t: "Pratnja na terminima",
+    s3d: "Idem s vama na termine i u institucije te pomažem s jezikom i praktičnim savjetima. Zahtjev podnosite vi, a ja vas pratim.",
+    s4t: "Životopis i razgovori za posao",
+    s4d: "Životopis prilagođen hrvatskom tržištu rada i priprema za razgovor za posao, od osobe koja radi u ljudskim resursima.",
+    svcMeta: "Uživo ili online · ES · EN · RU · HR · Cijena ovisi o vašem slučaju",
+    bkTitle: "Rezervirajte termin",
+    bkLead: "Odaberite uslugu i termin. Javit ću vam se radi potvrde točnog dana i sata (hrvatsko vrijeme).",
+    fService: "Usluga",
+    optNone: "Još ne znam, treba mi usmjeravanje",
+    fMode: "Način",
+    mOnline: "Online",
+    mInperson: "Uživo",
+    fDate: "Željeni dan",
+    fSlot: "Doba dana",
+    slMorning: "Jutro",
+    slAfternoon: "Poslijepodne",
+    slEvening: "Večer",
+    fLang: "Jezik termina",
+    fName: "Vaše ime",
+    fNote: "Napomena (neobavezno)",
+    notePh: "Ukratko opišite svoj slučaj (npr. radna dozvola ili spajanje obitelji)",
+    noteHint: "Ne unosite brojeve dokumenata ni osjetljive podatke.",
+    reqTitle: "Vaš upit",
+    btnWa: "Pošalji na WhatsApp",
+    btnCopy: "Kopiraj upit",
+    btnCal: "Otvori kalendar",
+    copied: "Kopirano",
+    copyFail: "Označite tekst iznad i kopirajte ga",
+    ctTitle: "Kontakt",
+    discTitle: "Važno.",
+    disc: "iMove pruža pratnju i informativnu podršku. Nije odvjetnički ured i ne pruža pravne savjete ni zastupanje. Uvjeti se mijenjaju: službene informacije uvijek su na stranicama Ministarstva unutarnjih poslova (MUP). Ishod nije zajamčen.",
+    msgHello: "Dobar dan, želim rezervirati termin s iMove.",
+    msgService: "Usluga", msgMode: "Način", msgDay: "Željeni dan", msgSlot: "Doba dana (hrvatsko vrijeme)",
+    msgLang: "Jezik termina", msgName: "Ime", msgNote: "Napomena"
+  };
+
+  // Español: se toma del propio HTML, más lo que no está en pantalla.
+  document.querySelectorAll("[data-i18n]").forEach(function (el) { T.es[el.getAttribute("data-i18n")] = el.textContent.trim(); });
+  document.querySelectorAll("[data-i18n-ph]").forEach(function (el) { T.es[el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder"); });
+  Object.assign(T.es, {
+    copied: "Copiado",
+    copyFail: "Selecciona el texto de arriba y cópialo",
+    msgHello: "Hola, quiero agendar una consulta con iMove.",
+    msgService: "Servicio", msgMode: "Modalidad", msgDay: "Día preferido", msgSlot: "Franja (hora de Croacia)",
+    msgLang: "Idioma de la sesión", msgName: "Nombre", msgNote: "Comentario"
+  });
+
+  var $ = function (id) { return document.getElementById(id); };
+  var lang = "es";
+  var langTouched = false;
+
+  function tr(key) { var d = T[lang]; return d[key] != null ? d[key] : T.es[key]; }
+
+  function values() {
+    var mode = document.querySelector('input[name="mode"]:checked');
+    var slot = document.querySelector('input[name="slot"]:checked');
+    return {
+      service: $("f-service").value,
+      mode: mode ? mode.value : "online",
+      date: $("f-date").value,
+      slot: slot ? slot.value : "",
+      sess: $("f-lang").value,
+      name: $("f-name").value.trim(),
+      note: $("f-note").value.trim()
+    };
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return "";
+    var d = new Date(iso + "T12:00:00");
+    if (isNaN(d.getTime())) return iso;
+    try { return d.toLocaleDateString(LOCALES[lang], { weekday: "long", day: "numeric", month: "long", year: "numeric" }); }
+    catch (e) { return iso; }
+  }
+
+  function message() {
+    var v = values();
+    var svc = v.service === "none" ? tr("optNone") : tr(v.service + "t");
+    var slots = { morning: "slMorning", afternoon: "slAfternoon", evening: "slEvening" };
+    var lines = [tr("msgHello"), ""];
+    lines.push(tr("msgService") + ": " + svc);
+    lines.push(tr("msgMode") + ": " + (v.mode === "online" ? tr("mOnline") : tr("mInperson")));
+    if (v.date) lines.push(tr("msgDay") + ": " + fmtDate(v.date));
+    if (v.slot) lines.push(tr("msgSlot") + ": " + tr(slots[v.slot]));
+    lines.push(tr("msgLang") + ": " + NAMES[v.sess]);
+    if (v.name) lines.push(tr("msgName") + ": " + v.name);
+    if (v.note) lines.push(tr("msgNote") + ": " + v.note);
+    return lines.join("\n");
+  }
+
+  function refresh() {
+    var msg = message();
+    $("preview").textContent = msg;
+    var wa = String(CONFIG.whatsapp || "").replace(/\D/g, "");
+    if (wa) $("btn-wa").href = "https://wa.me/" + wa + "?text=" + encodeURIComponent(msg);
+  }
+
+  function applyLang(l, fromUser) {
+    if (!T[l]) l = "es";
+    lang = l;
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = tr(el.getAttribute("data-i18n")); });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) { el.setAttribute("placeholder", tr(el.getAttribute("data-i18n-ph"))); });
+    document.querySelectorAll(".langs button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === l ? "true" : "false"); });
+    if (!langTouched) $("f-lang").value = l;
+    $("status").textContent = "";
+    refresh();
+    if (fromUser) {
+      try { localStorage.setItem("imove-lang", l); } catch (e) {}
+      try { if (location.hash.slice(1) !== l) history.replaceState(null, "", "#" + l); } catch (e) {}
+    }
+  }
+
+  // Contacto y calendario: solo se muestra lo que está configurado.
+  var wa = String(CONFIG.whatsapp || "").replace(/\D/g, "");
+  if (wa) $("btn-wa").hidden = false;
+  if (CONFIG.bookingUrl) { $("btn-cal").href = CONFIG.bookingUrl; $("btn-cal").hidden = false; }
+  if (wa) $("btn-copy").classList.add("alt");
+
+  var links = $("links");
+  function addLink(href, label, small) {
+    var a = document.createElement("a");
+    a.href = href; a.target = "_blank"; a.rel = "noopener";
+    var s1 = document.createElement("span"); s1.textContent = label;
+    a.appendChild(s1);
+    if (small) { var s2 = document.createElement("small"); s2.textContent = small; a.appendChild(s2); }
+    links.appendChild(a);
+  }
+  if (wa) addLink("https://wa.me/" + wa, "WhatsApp", "+" + wa);
+  if (CONFIG.instagram) addLink("https://instagram.com/" + CONFIG.instagram.replace(/^@/, ""), "Instagram", "@" + CONFIG.instagram.replace(/^@/, ""));
+  if (CONFIG.email) addLink("mailto:" + CONFIG.email, "Email", CONFIG.email);
+  if (links.children.length) $("contact").hidden = false;
+
+  // Eventos
+  document.querySelectorAll(".langs button").forEach(function (b) {
+    b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang"), true); });
+  });
+  $("f-lang").addEventListener("change", function () { langTouched = true; refresh(); });
+  ["f-service", "f-date", "f-name", "f-note"].forEach(function (id) {
+    $(id).addEventListener("input", refresh);
+    $(id).addEventListener("change", refresh);
+  });
+  document.querySelectorAll('input[name="mode"], input[name="slot"]').forEach(function (r) { r.addEventListener("change", refresh); });
+  $("bk").addEventListener("submit", function (e) { e.preventDefault(); });
+
+  var statusTimer;
+  $("btn-copy").addEventListener("click", function () {
+    var text = $("preview").textContent;
+    function ok() {
+      $("status").textContent = tr("copied");
+      clearTimeout(statusTimer);
+      statusTimer = setTimeout(function () { $("status").textContent = ""; }, 2500);
+    }
+    function fallback() {
+      try {
+        var r = document.createRange(); r.selectNodeContents($("preview"));
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      } catch (e) {}
+      $("status").textContent = tr("copyFail");
+    }
+    try {
+      navigator.clipboard.writeText(text).then(ok, fallback);
+    } catch (e) { fallback(); }
+  });
+
+  // Fecha mínima: hoy
+  (function () {
+    var d = new Date();
+    var m = String(d.getMonth() + 1).padStart(2, "0");
+    var day = String(d.getDate()).padStart(2, "0");
+    $("f-date").min = d.getFullYear() + "-" + m + "-" + day;
+  })();
+
+  // Idioma inicial: #es/#en/#ru/#hr, luego el guardado, luego el del navegador.
+  function initialLang() {
+    var h = (location.hash || "").slice(1);
+    if (T[h]) return h;
+    try { var s = localStorage.getItem("imove-lang"); if (T[s]) return s; } catch (e) {}
+    var n = (navigator.language || "es").slice(0, 2).toLowerCase();
+    return T[n] ? n : "es";
+  }
+  window.addEventListener("hashchange", function () {
+    var h = (location.hash || "").slice(1);
+    if (T[h] && h !== lang) applyLang(h, false);
+  });
+  applyLang(initialLang(), false);
+})();
+</script>
+
+</body></html>
