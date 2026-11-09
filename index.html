@@ -639,19 +639,21 @@ h2 { font-size: 13px; line-height: 1.2; letter-spacing: 0.1em; text-transform: u
   document.querySelectorAll('input[name="mode"], input[name="slot"]').forEach(function (r) { r.addEventListener("change", refresh); });
   $("bk").addEventListener("submit", function (e) { e.preventDefault(); });
 
-  var statusTimer;
-  $("btn-send").addEventListener("click", function () {
-    if (!CONFIG.email) {
-      $("status").textContent = "No hay una dirección de correo configurada.";
-      return;
-    }
-    var subject = "Nueva solicitud de iMove";
-    var body = $("preview").textContent;
-    var mailto = "mailto:" + CONFIG.email +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(body);
-    window.location.href = mailto;
-  });
+  // Envío de solicitud por correo electrónico
+$("btn-send").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  var email = "hello.imove@gmail.com";
+  var subject = "Nueva solicitud de iMove";
+  var body = message();
+
+  var mailto = "mailto:" + email +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  // Abrir el correo predeterminado del usuario
+  window.location.assign(mailto);
+});
 
   // Fecha mínima: hoy
   (function () {
